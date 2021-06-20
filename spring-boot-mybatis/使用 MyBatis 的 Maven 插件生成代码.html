@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 MyBatis 的 Maven 插件生成代码 | 我的笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/notebook/favicon.ico">
+    <script data-ad-client="ca-pub-4147143076931995" async="true" src="/notebook//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="方便阅读和寻找">
+    
+    <link rel="preload" href="/notebook/assets/css/0.styles.cee65b40.css" as="style"><link rel="preload" href="/notebook/assets/js/app.400f01da.js" as="script"><link rel="preload" href="/notebook/assets/js/2.ffba27f2.js" as="script"><link rel="preload" href="/notebook/assets/js/174.bd510afd.js" as="script"><link rel="prefetch" href="/notebook/assets/js/10.9da57264.js"><link rel="prefetch" href="/notebook/assets/js/100.8aa79850.js"><link rel="prefetch" href="/notebook/assets/js/101.f8819976.js"><link rel="prefetch" href="/notebook/assets/js/102.7168e4aa.js"><link rel="prefetch" href="/notebook/assets/js/103.e1f049f7.js"><link rel="prefetch" href="/notebook/assets/js/104.0ada8567.js"><link rel="prefetch" href="/notebook/assets/js/105.77e95b95.js"><link rel="prefetch" href="/notebook/assets/js/106.9071202a.js"><link rel="prefetch" href="/notebook/assets/js/107.a0a63241.js"><link rel="prefetch" href="/notebook/assets/js/108.93ccf0bf.js"><link rel="prefetch" href="/notebook/assets/js/109.57caff98.js"><link rel="prefetch" href="/notebook/assets/js/11.d9d769c3.js"><link rel="prefetch" href="/notebook/assets/js/110.6aa16c3f.js"><link rel="prefetch" href="/notebook/assets/js/111.293e18e5.js"><link rel="prefetch" href="/notebook/assets/js/112.7f593e53.js"><link rel="prefetch" href="/notebook/assets/js/113.e03d7fe0.js"><link rel="prefetch" href="/notebook/assets/js/114.4fd73421.js"><link rel="prefetch" href="/notebook/assets/js/115.8dc5910d.js"><link rel="prefetch" href="/notebook/assets/js/116.fc5215b7.js"><link rel="prefetch" href="/notebook/assets/js/117.851bae37.js"><link rel="prefetch" href="/notebook/assets/js/118.03cb2186.js"><link rel="prefetch" href="/notebook/assets/js/119.17f93b7e.js"><link rel="prefetch" href="/notebook/assets/js/12.125d7a59.js"><link rel="prefetch" href="/notebook/assets/js/120.4ea767fb.js"><link rel="prefetch" href="/notebook/assets/js/121.483ad579.js"><link rel="prefetch" href="/notebook/assets/js/122.17d2596f.js"><link rel="prefetch" href="/notebook/assets/js/123.56e20e4e.js"><link rel="prefetch" href="/notebook/assets/js/124.2ec822f9.js"><link rel="prefetch" href="/notebook/assets/js/125.bccb84ed.js"><link rel="prefetch" href="/notebook/assets/js/126.e38a7466.js"><link rel="prefetch" href="/notebook/assets/js/127.43962ebd.js"><link rel="prefetch" href="/notebook/assets/js/128.23f8246b.js"><link rel="prefetch" href="/notebook/assets/js/129.e718e26c.js"><link rel="prefetch" href="/notebook/assets/js/13.f56b83ad.js"><link rel="prefetch" href="/notebook/assets/js/130.a51fe94d.js"><link rel="prefetch" href="/notebook/assets/js/131.64fb54a3.js"><link rel="prefetch" href="/notebook/assets/js/132.badc2a1a.js"><link rel="prefetch" href="/notebook/assets/js/133.72f12c19.js"><link rel="prefetch" href="/notebook/assets/js/134.0b1b2dc0.js"><link rel="prefetch" href="/notebook/assets/js/135.be2d740c.js"><link rel="prefetch" href="/notebook/assets/js/136.c3dc9ba1.js"><link rel="prefetch" href="/notebook/assets/js/137.784510e4.js"><link rel="prefetch" href="/notebook/assets/js/138.ff844e48.js"><link rel="prefetch" href="/notebook/assets/js/139.1ac43f97.js"><link rel="prefetch" href="/notebook/assets/js/14.3ed225c4.js"><link rel="prefetch" href="/notebook/assets/js/140.4c427bf3.js"><link rel="prefetch" href="/notebook/assets/js/141.459f2cb4.js"><link rel="prefetch" href="/notebook/assets/js/142.e69e2b00.js"><link rel="prefetch" href="/notebook/assets/js/143.b9cd433a.js"><link rel="prefetch" href="/notebook/assets/js/144.c12cb09a.js"><link rel="prefetch" href="/notebook/assets/js/145.43e25cc4.js"><link rel="prefetch" href="/notebook/assets/js/146.0963c075.js"><link rel="prefetch" href="/notebook/assets/js/147.37f2e690.js"><link rel="prefetch" href="/notebook/assets/js/148.631fbe69.js"><link rel="prefetch" href="/notebook/assets/js/149.a22c5490.js"><link rel="prefetch" href="/notebook/assets/js/15.10a06d24.js"><link rel="prefetch" href="/notebook/assets/js/150.e6265d54.js"><link rel="prefetch" href="/notebook/assets/js/151.aefdb9fd.js"><link rel="prefetch" href="/notebook/assets/js/152.a8c722bd.js"><link rel="prefetch" href="/notebook/assets/js/153.ec2b1513.js"><link rel="prefetch" href="/notebook/assets/js/154.4fdc765f.js"><link rel="prefetch" href="/notebook/assets/js/155.de537bd1.js"><link rel="prefetch" href="/notebook/assets/js/156.7f87247c.js"><link rel="prefetch" href="/notebook/assets/js/157.f51afdd1.js"><link rel="prefetch" href="/notebook/assets/js/158.247f3f23.js"><link rel="prefetch" href="/notebook/assets/js/159.2342ec68.js"><link rel="prefetch" href="/notebook/assets/js/16.bc052b7f.js"><link rel="prefetch" href="/notebook/assets/js/160.98e33fe9.js"><link rel="prefetch" href="/notebook/assets/js/161.b8389795.js"><link rel="prefetch" href="/notebook/assets/js/162.5809ad21.js"><link rel="prefetch" href="/notebook/assets/js/163.6d40855f.js"><link rel="prefetch" href="/notebook/assets/js/164.cd5e8c28.js"><link rel="prefetch" href="/notebook/assets/js/165.c409d97c.js"><link rel="prefetch" href="/notebook/assets/js/166.75cd78fe.js"><link rel="prefetch" href="/notebook/assets/js/167.37552374.js"><link rel="prefetch" href="/notebook/assets/js/168.d4ab1d56.js"><link rel="prefetch" href="/notebook/assets/js/169.39f3c518.js"><link rel="prefetch" href="/notebook/assets/js/17.2a8873d5.js"><link rel="prefetch" href="/notebook/assets/js/170.7993242d.js"><link rel="prefetch" href="/notebook/assets/js/171.09f40b60.js"><link rel="prefetch" href="/notebook/assets/js/172.79168981.js"><link rel="prefetch" href="/notebook/assets/js/173.a75cd141.js"><link rel="prefetch" href="/notebook/assets/js/175.c3f8ba94.js"><link rel="prefetch" href="/notebook/assets/js/176.dd9cbd79.js"><link rel="prefetch" href="/notebook/assets/js/177.f53090f5.js"><link rel="prefetch" href="/notebook/assets/js/178.bcda53b0.js"><link rel="prefetch" href="/notebook/assets/js/179.2d510aa5.js"><link rel="prefetch" href="/notebook/assets/js/18.2d0a0d6d.js"><link rel="prefetch" href="/notebook/assets/js/180.6928e4f9.js"><link rel="prefetch" href="/notebook/assets/js/181.6cc94652.js"><link rel="prefetch" href="/notebook/assets/js/182.c7d6fde2.js"><link rel="prefetch" href="/notebook/assets/js/183.1a7eaa90.js"><link rel="prefetch" href="/notebook/assets/js/184.5d52b650.js"><link rel="prefetch" href="/notebook/assets/js/185.2f8eddcd.js"><link rel="prefetch" href="/notebook/assets/js/186.2615bcf2.js"><link rel="prefetch" href="/notebook/assets/js/187.ffb3009d.js"><link rel="prefetch" href="/notebook/assets/js/188.deef127e.js"><link rel="prefetch" href="/notebook/assets/js/189.51b1958b.js"><link rel="prefetch" href="/notebook/assets/js/19.482e846f.js"><link rel="prefetch" href="/notebook/assets/js/190.a5e85724.js"><link rel="prefetch" href="/notebook/assets/js/191.fd2dfc70.js"><link rel="prefetch" href="/notebook/assets/js/192.5cb3b141.js"><link rel="prefetch" href="/notebook/assets/js/193.3a6173b0.js"><link rel="prefetch" href="/notebook/assets/js/194.2b937e4b.js"><link rel="prefetch" href="/notebook/assets/js/195.71b1b3e2.js"><link rel="prefetch" href="/notebook/assets/js/196.d8d64ba1.js"><link rel="prefetch" href="/notebook/assets/js/197.fbea3131.js"><link rel="prefetch" href="/notebook/assets/js/198.25e90057.js"><link rel="prefetch" href="/notebook/assets/js/199.5bef52d0.js"><link rel="prefetch" href="/notebook/assets/js/20.3869e9c1.js"><link rel="prefetch" href="/notebook/assets/js/200.839b8484.js"><link rel="prefetch" href="/notebook/assets/js/201.dcc87a43.js"><link rel="prefetch" href="/notebook/assets/js/202.83abe52e.js"><link rel="prefetch" href="/notebook/assets/js/203.c8c886fe.js"><link rel="prefetch" href="/notebook/assets/js/204.7d91a0aa.js"><link rel="prefetch" href="/notebook/assets/js/205.dd934d84.js"><link rel="prefetch" href="/notebook/assets/js/206.ae9d7602.js"><link rel="prefetch" href="/notebook/assets/js/207.f5ac5260.js"><link rel="prefetch" href="/notebook/assets/js/208.203ba066.js"><link rel="prefetch" href="/notebook/assets/js/209.202991be.js"><link rel="prefetch" href="/notebook/assets/js/21.95b2d828.js"><link rel="prefetch" href="/notebook/assets/js/210.3e7c6db0.js"><link rel="prefetch" href="/notebook/assets/js/211.d231f4d5.js"><link rel="prefetch" href="/notebook/assets/js/212.74210f2c.js"><link rel="prefetch" href="/notebook/assets/js/213.ca497e10.js"><link rel="prefetch" href="/notebook/assets/js/214.256f2f8d.js"><link rel="prefetch" href="/notebook/assets/js/215.e5a91195.js"><link rel="prefetch" href="/notebook/assets/js/22.bfedf3cf.js"><link rel="prefetch" href="/notebook/assets/js/23.07416482.js"><link rel="prefetch" href="/notebook/assets/js/24.54aaf5dd.js"><link rel="prefetch" href="/notebook/assets/js/25.5fddfc47.js"><link rel="prefetch" href="/notebook/assets/js/26.3beace9a.js"><link rel="prefetch" href="/notebook/assets/js/27.8166fc8b.js"><link rel="prefetch" href="/notebook/assets/js/28.45eec4fe.js"><link rel="prefetch" href="/notebook/assets/js/29.7d2c15a3.js"><link rel="prefetch" href="/notebook/assets/js/3.58b1a014.js"><link rel="prefetch" href="/notebook/assets/js/30.a7841312.js"><link rel="prefetch" href="/notebook/assets/js/31.dc9675e8.js"><link rel="prefetch" href="/notebook/assets/js/32.93c6c35d.js"><link rel="prefetch" href="/notebook/assets/js/33.9a64b2f6.js"><link rel="prefetch" href="/notebook/assets/js/34.0c220f3c.js"><link rel="prefetch" href="/notebook/assets/js/35.9f407421.js"><link rel="prefetch" href="/notebook/assets/js/36.ee8ac781.js"><link rel="prefetch" href="/notebook/assets/js/37.569079d1.js"><link rel="prefetch" href="/notebook/assets/js/38.56b32d83.js"><link rel="prefetch" href="/notebook/assets/js/39.6ea9c955.js"><link rel="prefetch" href="/notebook/assets/js/4.5042ba18.js"><link rel="prefetch" href="/notebook/assets/js/40.5bdebc85.js"><link rel="prefetch" href="/notebook/assets/js/41.8607bd5a.js"><link rel="prefetch" href="/notebook/assets/js/42.2063b1d0.js"><link rel="prefetch" href="/notebook/assets/js/43.ff59782c.js"><link rel="prefetch" href="/notebook/assets/js/44.c40eaded.js"><link rel="prefetch" href="/notebook/assets/js/45.bc61bb49.js"><link rel="prefetch" href="/notebook/assets/js/46.e9ea5687.js"><link rel="prefetch" href="/notebook/assets/js/47.a9626a0e.js"><link rel="prefetch" href="/notebook/assets/js/48.9bf986fe.js"><link rel="prefetch" href="/notebook/assets/js/49.dd90158a.js"><link rel="prefetch" href="/notebook/assets/js/5.b9679d2a.js"><link rel="prefetch" href="/notebook/assets/js/50.a9546c5a.js"><link rel="prefetch" href="/notebook/assets/js/51.dcc646ec.js"><link rel="prefetch" href="/notebook/assets/js/52.111a35ff.js"><link rel="prefetch" href="/notebook/assets/js/53.19719081.js"><link rel="prefetch" href="/notebook/assets/js/54.543f990e.js"><link rel="prefetch" href="/notebook/assets/js/55.02863756.js"><link rel="prefetch" href="/notebook/assets/js/56.262a1288.js"><link rel="prefetch" href="/notebook/assets/js/57.a80801ee.js"><link rel="prefetch" href="/notebook/assets/js/58.38d623bc.js"><link rel="prefetch" href="/notebook/assets/js/59.07a6b6b6.js"><link rel="prefetch" href="/notebook/assets/js/6.77dfe150.js"><link rel="prefetch" href="/notebook/assets/js/60.df11d23d.js"><link rel="prefetch" href="/notebook/assets/js/61.764a5b2e.js"><link rel="prefetch" href="/notebook/assets/js/62.28916805.js"><link rel="prefetch" href="/notebook/assets/js/63.f54fb2ba.js"><link rel="prefetch" href="/notebook/assets/js/64.73bb9e27.js"><link rel="prefetch" href="/notebook/assets/js/65.8e45d2c8.js"><link rel="prefetch" href="/notebook/assets/js/66.6cabc639.js"><link rel="prefetch" href="/notebook/assets/js/67.61f4e99c.js"><link rel="prefetch" href="/notebook/assets/js/68.fec9c74e.js"><link rel="prefetch" href="/notebook/assets/js/69.b530b731.js"><link rel="prefetch" href="/notebook/assets/js/7.bac04506.js"><link rel="prefetch" href="/notebook/assets/js/70.e2902def.js"><link rel="prefetch" href="/notebook/assets/js/71.09df6e0a.js"><link rel="prefetch" href="/notebook/assets/js/72.5c611ac8.js"><link rel="prefetch" href="/notebook/assets/js/73.66c43b39.js"><link rel="prefetch" href="/notebook/assets/js/74.243e6a2f.js"><link rel="prefetch" href="/notebook/assets/js/75.de524cab.js"><link rel="prefetch" href="/notebook/assets/js/76.750c2fc0.js"><link rel="prefetch" href="/notebook/assets/js/77.fa7ddd5d.js"><link rel="prefetch" href="/notebook/assets/js/78.192816fd.js"><link rel="prefetch" href="/notebook/assets/js/79.a3f3fcd9.js"><link rel="prefetch" href="/notebook/assets/js/8.48754361.js"><link rel="prefetch" href="/notebook/assets/js/80.c3fd6acb.js"><link rel="prefetch" href="/notebook/assets/js/81.7ba4627a.js"><link rel="prefetch" href="/notebook/assets/js/82.e355d704.js"><link rel="prefetch" href="/notebook/assets/js/83.2579aea2.js"><link rel="prefetch" href="/notebook/assets/js/84.1f72cccf.js"><link rel="prefetch" href="/notebook/assets/js/85.7874726d.js"><link rel="prefetch" href="/notebook/assets/js/86.a863f0c3.js"><link rel="prefetch" href="/notebook/assets/js/87.c8c7690e.js"><link rel="prefetch" href="/notebook/assets/js/88.5d7963f9.js"><link rel="prefetch" href="/notebook/assets/js/89.9391f30b.js"><link rel="prefetch" href="/notebook/assets/js/9.c2fb6f2c.js"><link rel="prefetch" href="/notebook/assets/js/90.76bedd2e.js"><link rel="prefetch" href="/notebook/assets/js/91.e345e87a.js"><link rel="prefetch" href="/notebook/assets/js/92.175f428e.js"><link rel="prefetch" href="/notebook/assets/js/93.f45b4417.js"><link rel="prefetch" href="/notebook/assets/js/94.e3f459de.js"><link rel="prefetch" href="/notebook/assets/js/95.1632f845.js"><link rel="prefetch" href="/notebook/assets/js/96.4d0a41d5.js"><link rel="prefetch" href="/notebook/assets/js/97.39bd1831.js"><link rel="prefetch" href="/notebook/assets/js/98.54282751.js"><link rel="prefetch" href="/notebook/assets/js/99.b60593a3.js">
+    <link rel="stylesheet" href="/notebook/assets/css/0.styles.cee65b40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/notebook/" class="home-link router-link-active"><!----> <span class="site-name">我的笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/notebook/guide/" class="nav-link">
+  指南
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/notebook/guide/" class="nav-link">
+  指南
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Spring Boot Thymeleaf</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/notebook/spring-boot-mybatis/" aria-current="page" class="sidebar-link">Spring Boot 整合 Druid</a></li><li><a href="/notebook/spring-boot-mybatis/Spring Boot 整合 tk.mybatis.html" class="sidebar-link">Spring Boot 整合 tk.mybatis</a></li><li><a href="/notebook/spring-boot-mybatis/Spring Boot 整合 PageHelper.html" class="sidebar-link">Spring Boot 整合 PageHelper</a></li><li><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html" class="active sidebar-link">使用 MyBatis 的 Maven 插件生成代码</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html#配置插件" class="sidebar-link">配置插件</a></li><li class="sidebar-sub-header"><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html#自动生成的配置" class="sidebar-link">自动生成的配置</a></li><li class="sidebar-sub-header"><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html#配置数据源" class="sidebar-link">配置数据源</a></li><li class="sidebar-sub-header"><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html#插件自动生成命令" class="sidebar-link">插件自动生成命令</a></li><li class="sidebar-sub-header"><a href="/notebook/spring-boot-mybatis/使用 MyBatis 的 Maven 插件生成代码.html#完整配置案例" class="sidebar-link">完整配置案例</a></li></ul></li><li><a href="/notebook/spring-boot-mybatis/测试 MyBatis 操作数据库.html" class="sidebar-link">测试 MyBatis 操作数据库</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用-mybatis-的-maven-插件生成代码"><a href="#使用-mybatis-的-maven-插件生成代码" class="header-anchor">#</a> 使用 MyBatis 的 Maven 插件生成代码</h1> <p>我们无需手动编写 实体类、DAO、XML 配置文件，只需要使用 MyBatis 提供的一个 Maven 插件就可以自动生成所需的各种文件便能够满足基本的业务需求，如果业务比较复杂只需要修改相关文件即可。</p> <h2 id="配置插件"><a href="#配置插件" class="header-anchor">#</a> 配置插件</h2> <p>在 <code>pom.xml</code> 文件中增加 <code>mybatis-generator-maven-plugin</code> 插件</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.mybatis.generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mybatis-generator-maven-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.3.5<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configurationFile</span><span class="token punctuation">&gt;</span></span>${basedir}/src/main/resources/generator/generatorConfig.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configurationFile</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>overwrite</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>overwrite</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>verbose</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>verbose</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mysql-connector-java<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>${mysql.version}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>tk.mybatis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mapper<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.4.4<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ul><li>configurationFile：自动生成所需的配置文件路径</li></ul> <h2 id="自动生成的配置"><a href="#自动生成的配置" class="header-anchor">#</a> 自动生成的配置</h2> <p>在 <code>src/main/resources/generator/</code> 目录下创建 <code>generatorConfig.xml</code> 配置文件：</p> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">generatorConfiguration</span>
+        <span class="token name">PUBLIC</span> <span class="token string">&quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span>
+        <span class="token string">&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>generatorConfiguration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- 引入数据库连接配置 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>jdbc.properties<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Mysql<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetRuntime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>MyBatis3Simple<span class="token punctuation">&quot;</span></span> <span class="token attr-name">defaultModelType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flat<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>beginningDelimiter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>`<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>endingDelimiter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>`<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+        
+        <span class="token comment">&lt;!-- 配置 tk.mybatis 插件 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>tk.mybatis.mapper.generator.MapperPlugin<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mappers<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.funtl.utils.MyMapper<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 配置数据库连接 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdbcConnection</span>
+                <span class="token attr-name">driverClass</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${jdbc.driverClass}<span class="token punctuation">&quot;</span></span>
+                <span class="token attr-name">connectionURL</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${jdbc.connectionURL}<span class="token punctuation">&quot;</span></span>
+                <span class="token attr-name">userId</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${jdbc.username}<span class="token punctuation">&quot;</span></span>
+                <span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>${jdbc.password}<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdbcConnection</span><span class="token punctuation">&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 配置实体类存放路径 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaModelGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.funtl.hello.spring.boot.entity<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/java<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 配置 XML 存放路径 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sqlMapGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mapper<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/resources<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 配置 DAO 存放路径 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaClientGenerator</span>
+                <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.funtl.hello.spring.boot.mapper<span class="token punctuation">&quot;</span></span>
+                <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/java<span class="token punctuation">&quot;</span></span>
+                <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>XMLMAPPER<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+
+        <span class="token comment">&lt;!-- 配置需要指定生成的数据库和表，% 代表所有表 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">catalog</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>myshop<span class="token punctuation">&quot;</span></span> <span class="token attr-name">tableName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>%<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+            <span class="token comment">&lt;!-- mysql 配置 --&gt;</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>generatedKey</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>id<span class="token punctuation">&quot;</span></span> <span class="token attr-name">sqlStatement</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Mysql<span class="token punctuation">&quot;</span></span> <span class="token attr-name">identity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>generatorConfiguration</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h2 id="配置数据源"><a href="#配置数据源" class="header-anchor">#</a> 配置数据源</h2> <p>在 <code>src/main/resources</code> 目录下创建 <code>jdbc.properties</code> 数据源配置：</p> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token comment"># MySQL 8.x: com.mysql.cj.jdbc.Driver</span>
+<span class="token attr-name">jdbc.driverClass</span><span class="token punctuation">=</span><span class="token attr-value">com.mysql.jdbc.Driver</span>
+<span class="token attr-name">jdbc.connectionURL</span><span class="token punctuation">=</span><span class="token attr-value">jdbc:mysql://ip:port/dbname?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</span>
+<span class="token attr-name">jdbc.username</span><span class="token punctuation">=</span><span class="token attr-value">root</span>
+<span class="token attr-name">jdbc.password</span><span class="token punctuation">=</span><span class="token attr-value">123456</span>
+</code></pre></div><h2 id="插件自动生成命令"><a href="#插件自动生成命令" class="header-anchor">#</a> 插件自动生成命令</h2> <div class="language-text extra-class"><pre class="language-text"><code>mvn mybatis-generator:generate
+</code></pre></div><p>成功生成控制台打印的消息，如：</p> <div class="language-text extra-class"><pre class="language-text"><code>[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building hello-spring-boot 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- mybatis-generator-maven-plugin:1.3.5:generate (default-cli) @ hello-spring-boot ---
+[INFO] Connecting to the Database
+[INFO] Introspecting table %
+[INFO] Generating Record class for table tb_order
+[INFO] Generating Mapper Interface for table tb_order
+[INFO] Generating SQL Map for table tb_order
+[INFO] Generating Record class for table tb_item_cat
+[INFO] Generating Mapper Interface for table tb_item_cat
+[INFO] Generating SQL Map for table tb_item_cat
+[INFO] Generating Record class for table tb_item_desc
+[INFO] Generating Mapper Interface for table tb_item_desc
+[INFO] Generating SQL Map for table tb_item_desc
+[INFO] Generating Record class for table tb_order_shipping
+[INFO] Generating Mapper Interface for table tb_order_shipping
+[INFO] Generating SQL Map for table tb_order_shipping
+[INFO] Generating Record class for table tb_user
+[INFO] Generating Mapper Interface for table tb_user
+[INFO] Generating SQL Map for table tb_user
+[INFO] Generating Record class for table tb_content
+[INFO] Generating Mapper Interface for table tb_content
+[INFO] Generating SQL Map for table tb_content
+[INFO] Generating Record class for table tb_item_param_item
+[INFO] Generating Mapper Interface for table tb_item_param_item
+[INFO] Generating SQL Map for table tb_item_param_item
+[INFO] Generating Record class for table tb_order_item
+[INFO] Generating Mapper Interface for table tb_order_item
+[INFO] Generating SQL Map for table tb_order_item
+[INFO] Generating Record class for table tb_content_category
+[INFO] Generating Mapper Interface for table tb_content_category
+[INFO] Generating SQL Map for table tb_content_category
+[INFO] Generating Record class for table tb_item
+[INFO] Generating Mapper Interface for table tb_item
+[INFO] Generating SQL Map for table tb_item
+[INFO] Generating Record class for table tb_item_param
+[INFO] Generating Mapper Interface for table tb_item_param
+[INFO] Generating SQL Map for table tb_item_param
+[INFO] Saving file TbOrderMapper.xml
+[INFO] Saving file TbItemCatMapper.xml
+[INFO] Saving file TbItemDescMapper.xml
+[INFO] Saving file TbOrderShippingMapper.xml
+[INFO] Saving file TbUserMapper.xml
+[INFO] Saving file TbContentMapper.xml
+[INFO] Saving file TbItemParamItemMapper.xml
+[INFO] Saving file TbOrderItemMapper.xml
+[INFO] Saving file TbContentCategoryMapper.xml
+[INFO] Saving file TbItemMapper.xml
+[INFO] Saving file TbItemParamMapper.xml
+[INFO] Saving file TbOrder.java
+[INFO] Saving file TbOrderMapper.java
+[INFO] Saving file TbItemCat.java
+[INFO] Saving file TbItemCatMapper.java
+[INFO] Saving file TbItemDesc.java
+[INFO] Saving file TbItemDescMapper.java
+[INFO] Saving file TbOrderShipping.java
+[INFO] Saving file TbOrderShippingMapper.java
+[INFO] Saving file TbUser.java
+[INFO] Saving file TbUserMapper.java
+[INFO] Saving file TbContent.java
+[INFO] Saving file TbContentMapper.java
+[INFO] Saving file TbItemParamItem.java
+[INFO] Saving file TbItemParamItemMapper.java
+[INFO] Saving file TbOrderItem.java
+[INFO] Saving file TbOrderItemMapper.java
+[INFO] Saving file TbContentCategory.java
+[INFO] Saving file TbContentCategoryMapper.java
+[INFO] Saving file TbItem.java
+[INFO] Saving file TbItemMapper.java
+[INFO] Saving file TbItemParam.java
+[INFO] Saving file TbItemParamMapper.java
+[WARNING] Column id, specified as an identity column in table tb_order, does not exist in the table.
+[WARNING] Column id, specified as an identity column in table tb_item_desc, does not exist in the table.
+[WARNING] Column id, specified as an identity column in table tb_order_shipping, does not exist in the table.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.901 s
+[INFO] Finished at: 2018-05-29T01:24:17+08:00
+[INFO] Final Memory: 12M/192M
+[INFO] ------------------------------------------------------------------------
+</code></pre></div><h2 id="完整配置案例"><a href="#完整配置案例" class="header-anchor">#</a> 完整配置案例</h2> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">generatorConfiguration</span>
+  <span class="token name">PUBLIC</span> <span class="token string">&quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;</span>
+<span class="token string">&quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- 配置生成器 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>generatorConfiguration</span><span class="token punctuation">&gt;</span></span>
+<span class="token comment">&lt;!-- 可以用于加载配置项或者配置文件，在整个配置文件中就可以使用${propertyKey}的方式来引用配置项
+    resource：配置资源加载地址，使用resource，MBG从classpath开始找，比如com/myproject/generatorConfig.properties        
+    url：配置资源加载地质，使用URL的方式，比如file:///C:/myfolder/generatorConfig.properties.
+    注意，两个属性只能选址一个;
+    另外，如果使用了mybatis-generator-maven-plugin，那么在pom.xml中定义的properties都可以直接在generatorConfig.xml中使用
+&lt;properties resource=&quot;&quot; url=&quot;&quot; /&gt;
+ --&gt;</span>
+ 
+ <span class="token comment">&lt;!-- 在MBG工作的时候，需要额外加载的依赖包
+     location属性指明加载jar/zip包的全路径
+&lt;classPathEntry location=&quot;/Program Files/IBM/SQLLIB/java/db2java.zip&quot; /&gt;
+  --&gt;</span>
+ 
+<span class="token comment">&lt;!-- 
+    context:生成一组对象的环境 
+    id:必选，上下文id，用于在生成错误时提示
+    defaultModelType:指定生成对象的样式
+        1，conditional：类似hierarchical；
+        2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+    targetRuntime:
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+    introspectedColumnImpl：类全限定名，用于扩展MBG
+--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mysql<span class="token punctuation">&quot;</span></span> <span class="token attr-name">defaultModelType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>hierarchical<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetRuntime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>MyBatis3Simple<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+ 
+    <span class="token comment">&lt;!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
+        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
+     --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>autoDelimitKeywords<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 生成的Java文件的编码 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>javaFileEncoding<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>UTF-8<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 格式化java代码 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>javaFormatter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.mybatis.generator.api.dom.DefaultJavaFormatter<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- 格式化XML代码 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>xmlFormatter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.mybatis.generator.api.dom.DefaultXmlFormatter<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+    <span class="token comment">&lt;!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>beginningDelimiter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>`<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>endingDelimiter<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>`<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+    <span class="token comment">&lt;!-- 必须要有的，使用这个配置链接数据库
+        @TODO:是否可以扩展
+        # MySQL 8.x: com.mysql.cj.jdbc.Driver
+     --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdbcConnection</span> <span class="token attr-name">driverClass</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.mysql.jdbc.Driver<span class="token punctuation">&quot;</span></span> <span class="token attr-name">connectionURL</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>jdbc:mysql:///pss<span class="token punctuation">&quot;</span></span> <span class="token attr-name">userId</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>root<span class="token punctuation">&quot;</span></span> <span class="token attr-name">password</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>admin<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 这里面可以设置property属性，每一个property属性都设置到配置的Driver上 --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdbcConnection</span><span class="token punctuation">&gt;</span></span>
+ 
+    <span class="token comment">&lt;!-- java类型处理器 
+        用于处理DB中的类型到Java中的类型，默认使用JavaTypeResolverDefaultImpl；
+        注意一点，默认会先尝试使用Integer，Long，Short等来对应DECIMAL和 NUMERIC数据类型； 
+    --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaTypeResolver</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 
+            true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+            false：默认,
+                scale&gt;0;length&gt;18：使用BigDecimal;
+                scale=0;length[10,18]：使用Long；
+                scale=0;length[5,9]：使用Integer；
+                scale=0;length&lt;5：使用Short；
+         --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>forceBigDecimals<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaTypeResolver</span><span class="token punctuation">&gt;</span></span>
+ 
+ 
+    <span class="token comment">&lt;!-- java模型创建器，是必须要的元素
+        负责：1，key类（见context的defaultModelType）；2，java类；3，查询类
+        targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
+        targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
+     --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaModelGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com._520it.mybatis.domain<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/java<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!--  for MyBatis3/MyBatis3Simple
+            自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
+         --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>constructorBased<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>enableSubPackages<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- for MyBatis3 / MyBatis3Simple
+            是否创建一个不可变的类，如果为true，
+            那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类
+         --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>immutable<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 设置一个根对象，
+            如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项
+            注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：
+                1，属性名相同，类型相同，有相同的getter/setter方法；
+         --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>rootClass<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com._520it.mybatis.domain.BaseDomain<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 设置是否在getter方法中，对String类型字段调用trim()方法 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>trimStrings<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaModelGenerator</span><span class="token punctuation">&gt;</span></span>
+ 
+ 
+    <span class="token comment">&lt;!-- 生成SQL map的XML文件生成器，
+        注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），
+            或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置
+        targetPackage/targetProject:同javaModelGenerator
+     --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sqlMapGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com._520it.mybatis.mapper<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/resources<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>enableSubPackages<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sqlMapGenerator</span><span class="token punctuation">&gt;</span></span>
+ 
+ 
+    <span class="token comment">&lt;!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口 
+        targetPackage/targetProject:同javaModelGenerator
+        type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+            1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+            2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+            3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+        注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
+    --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>javaClientGenerator</span> <span class="token attr-name">targetPackage</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com._520it.mybatis.mapper<span class="token punctuation">&quot;</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ANNOTATEDMAPPER<span class="token punctuation">&quot;</span></span> <span class="token attr-name">targetProject</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>src/main/java<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token comment">&lt;!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>enableSubPackages<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查
+        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;
+         --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>javaClientGenerator</span><span class="token punctuation">&gt;</span></span>
+ 
+    <span class="token comment">&lt;!-- 选择一个table来生成相关文件，可以有一个或多个table，必须要有table元素
+        选择的table会生成一下文件：
+        1，SQL map文件
+        2，生成一个主键类；
+        3，除了BLOB和主键的其他字段的类；
+        4，包含BLOB的类；
+        5，一个用户生成动态查询的条件类（selectByExample, deleteByExample），可选；
+        6，Mapper接口（可选）
+        tableName（必要）：要生成对象的表名；
+        注意：大小写敏感问题。正常情况下，MBG会自动的去识别数据库标识符的大小写敏感度，在一般情况下，MBG会
+            根据设置的schema，catalog或tablename去查询数据表，按照下面的流程：
+            1，如果schema，catalog或tablename中有空格，那么设置的是什么格式，就精确的使用指定的大小写格式去查询；
+            2，否则，如果数据库的标识符使用大写的，那么MBG自动把表名变成大写再查找；
+            3，否则，如果数据库的标识符使用小写的，那么MBG自动把表名变成小写再查找；
+            4，否则，使用指定的大小写格式查询；
+        另外的，如果在创建表的时候，使用的&quot;&quot;把数据库对象规定大小写，就算数据库标识符是使用的大写，在这种情况下也会使用给定的大小写来创建表名；
+        这个时候，请设置delimitIdentifiers=&quot;true&quot;即可保留大小写格式；
+        可选：
+        1，schema：数据库的schema；
+        2，catalog：数据库的catalog；
+        3，alias：为数据表设置的别名，如果设置了alias，那么生成的所有的SELECT SQL语句中，列名会变成：alias_actualColumnName
+        4，domainObjectName：生成的domain类的名字，如果不设置，直接使用表名作为domain类的名字；可以设置为somepck.domainName，那么会自动把domainName类再放到somepck包里面；
+        5，enableInsert（默认true）：指定是否生成insert语句；
+        6，enableSelectByPrimaryKey（默认true）：指定是否生成按照主键查询对象的语句（就是getById或get）；
+        7，enableSelectByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询语句；
+        8，enableUpdateByPrimaryKey（默认true）：指定是否生成按照主键修改对象的语句（即update)；
+        9，enableDeleteByPrimaryKey（默认true）：指定是否生成按照主键删除对象的语句（即delete）；
+        10，enableDeleteByExample（默认true）：MyBatis3Simple为false，指定是否生成动态删除语句；
+        11，enableCountByExample（默认true）：MyBatis3Simple为false，指定是否生成动态查询总条数语句（用于分页的总条数查询）；
+        12，enableUpdateByExample（默认true）：MyBatis3Simple为false，指定是否生成动态修改语句（只修改对象中不为空的属性）；
+        13，modelType：参考context元素的defaultModelType，相当于覆盖；
+        14，delimitIdentifiers：参考tableName的解释，注意，默认的delimitIdentifiers是双引号，如果类似MYSQL这样的数据库，使用的是`（反引号，那么还需要设置context的beginningDelimiter和endingDelimiter属性）
+        15，delimitAllColumns：设置是否所有生成的SQL中的列名都使用标识符引起来。默认为false，delimitIdentifiers参考context的属性
+        注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
+     --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span> <span class="token attr-name">tableName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>userinfo<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 参考 javaModelGenerator 的 constructorBased属性--&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>constructorBased<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 默认为false，如果设置为true，在生成的SQL中，table名字不会加上catalog或schema； --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ignoreQualifiersAtRuntime<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 参考 javaModelGenerator 的 immutable 属性 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>immutable<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 指定是否只生成domain类，如果设置为true，只生成domain类，如果还配置了sqlMapGenerator，那么在mapper XML文件中，只生成resultMap元素 --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>modelOnly<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 参考 javaModelGenerator 的 rootClass 属性 
+        &lt;property name=&quot;rootClass&quot; value=&quot;&quot;/&gt;
+         --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 参考javaClientGenerator 的  rootInterface 属性
+        &lt;property name=&quot;rootInterface&quot; value=&quot;&quot;/&gt;
+        --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 如果设置了runtimeCatalog，那么在生成的SQL中，使用该指定的catalog，而不是table元素上的catalog 
+        &lt;property name=&quot;runtimeCatalog&quot; value=&quot;&quot;/&gt;
+        --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 如果设置了runtimeSchema，那么在生成的SQL中，使用该指定的schema，而不是table元素上的schema 
+        &lt;property name=&quot;runtimeSchema&quot; value=&quot;&quot;/&gt;
+        --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 如果设置了runtimeTableName，那么在生成的SQL中，使用该指定的tablename，而不是table元素上的tablename 
+        &lt;property name=&quot;runtimeTableName&quot; value=&quot;&quot;/&gt;
+        --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 注意，该属性只针对MyBatis3Simple有用；
+            如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；
+         --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>selectAllOrderByClause<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>age desc,username asc<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+        <span class="token comment">&lt;!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate --&gt;</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>useActualColumnNames<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+ 
+        <span class="token comment">&lt;!-- generatedKey用于生成生成主键的方法，
+            如果设置了该元素，MBG会在生成的&lt;insert&gt;元素中生成一条正确的&lt;selectKey&gt;元素，该元素可选
+            column:主键的列名；
+            sqlStatement：要生成的selectKey语句，有以下可选项：
+                Cloudscape:相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
+                DB2       :相当于selectKey的SQL为： VALUES IDENTITY_VAL_LOCAL()
+                DB2_MF    :相当于selectKey的SQL为：SELECT IDENTITY_VAL_LOCAL() FROM SYSIBM.SYSDUMMY1
+                Derby      :相当于selectKey的SQL为：VALUES IDENTITY_VAL_LOCAL()
+                HSQLDB      :相当于selectKey的SQL为：CALL IDENTITY()
+                Informix  :相当于selectKey的SQL为：select dbinfo('sqlca.sqlerrd1') from systables where tabid=1
+                MySql      :相当于selectKey的SQL为：SELECT LAST_INSERT_ID()
+                SqlServer :相当于selectKey的SQL为：SELECT SCOPE_IDENTITY()
+                SYBASE      :相当于selectKey的SQL为：SELECT @@IDENTITY
+                JDBC      :相当于在生成的insert元素上添加useGeneratedKeys=&quot;true&quot;和keyProperty属性
+        &lt;generatedKey column=&quot;&quot; sqlStatement=&quot;&quot;/&gt;
+         --&gt;</span>
+ 
+        <span class="token comment">&lt;!-- 
+            该元素会在根据表中列名计算对象属性名之前先重命名列名，非常适合用于表中的列都有公用的前缀字符串的时候，
+            比如列名为：CUST_ID,CUST_NAME,CUST_EMAIL,CUST_ADDRESS等；
+            那么就可以设置searchString为&quot;^CUST_&quot;，并使用空白替换，那么生成的Customer对象中的属性名称就不是
+            custId,custName等，而是先被替换为ID,NAME,EMAIL,然后变成属性：id，name，email；
+            注意，MBG是使用java.util.regex.Matcher.replaceAll来替换searchString和replaceString的，
+            如果使用了columnOverride元素，该属性无效；
+        &lt;columnRenamingRule searchString=&quot;&quot; replaceString=&quot;&quot;/&gt;
+         --&gt;</span>
+ 
+ 
+         <span class="token comment">&lt;!-- 用来修改表中某个列的属性，MBG会使用修改后的列来生成domain的属性；
+             column:要重新设置的列名；
+             注意，一个table元素中可以有多个columnOverride元素哈~
+          --&gt;</span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>columnOverride</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>username<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+             <span class="token comment">&lt;!-- 使用property属性来指定列要生成的属性名称 --&gt;</span>
+             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>property<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>userName<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+ 
+             <span class="token comment">&lt;!-- javaType用于指定生成的domain的属性类型，使用类型的全限定名
+             &lt;property name=&quot;javaType&quot; value=&quot;&quot;/&gt;
+              --&gt;</span>
+ 
+             <span class="token comment">&lt;!-- jdbcType用于指定该列的JDBC类型 
+             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;
+              --&gt;</span>
+ 
+             <span class="token comment">&lt;!-- typeHandler 用于指定该列使用到的TypeHandler，如果要指定，配置类型处理器的全限定名
+                 注意，mybatis中，不会生成到mybatis-config.xml中的typeHandler
+                 只会生成类似：where id = #{id,jdbcType=BIGINT,typeHandler=com._520it.mybatis.MyTypeHandler}的参数描述
+             &lt;property name=&quot;jdbcType&quot; value=&quot;&quot;/&gt;
+             --&gt;</span>
+ 
+             <span class="token comment">&lt;!-- 参考table元素的delimitAllColumns配置，默认为false
+             &lt;property name=&quot;delimitedColumnName&quot; value=&quot;&quot;/&gt;
+              --&gt;</span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>columnOverride</span><span class="token punctuation">&gt;</span></span>
+ 
+         <span class="token comment">&lt;!-- ignoreColumn设置一个MGB忽略的列，如果设置了改列，那么在生成的domain中，生成的SQL中，都不会有该列出现 
+             column:指定要忽略的列的名字；
+             delimitedColumnName：参考table元素的delimitAllColumns配置，默认为false
+             注意，一个table元素中可以有多个ignoreColumn元素
+         &lt;ignoreColumn column=&quot;deptId&quot; delimitedColumnName=&quot;&quot;/&gt;
+         --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
+ 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context</span><span class="token punctuation">&gt;</span></span>
+ 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>generatorConfiguration</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/notebook/spring-boot-mybatis/Spring Boot 整合 PageHelper.html" class="prev">
+        Spring Boot 整合 PageHelper
+      </a></span> <span class="next"><a href="/notebook/spring-boot-mybatis/测试 MyBatis 操作数据库.html">
+        测试 MyBatis 操作数据库
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/notebook/assets/js/app.400f01da.js" defer></script><script src="/notebook/assets/js/2.ffba27f2.js" defer></script><script src="/notebook/assets/js/174.bd510afd.js" defer></script>
+  </body>
+</html>

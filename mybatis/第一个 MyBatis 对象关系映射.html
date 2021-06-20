@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>第一个 MyBatis 对象关系映射 | 我的笔记</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/notebook/favicon.ico">
+    <script data-ad-client="ca-pub-4147143076931995" async="true" src="/notebook//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="description" content="方便阅读和寻找">
+    
+    <link rel="preload" href="/notebook/assets/css/0.styles.cee65b40.css" as="style"><link rel="preload" href="/notebook/assets/js/app.400f01da.js" as="script"><link rel="preload" href="/notebook/assets/js/2.ffba27f2.js" as="script"><link rel="preload" href="/notebook/assets/js/160.98e33fe9.js" as="script"><link rel="prefetch" href="/notebook/assets/js/10.9da57264.js"><link rel="prefetch" href="/notebook/assets/js/100.8aa79850.js"><link rel="prefetch" href="/notebook/assets/js/101.f8819976.js"><link rel="prefetch" href="/notebook/assets/js/102.7168e4aa.js"><link rel="prefetch" href="/notebook/assets/js/103.e1f049f7.js"><link rel="prefetch" href="/notebook/assets/js/104.0ada8567.js"><link rel="prefetch" href="/notebook/assets/js/105.77e95b95.js"><link rel="prefetch" href="/notebook/assets/js/106.9071202a.js"><link rel="prefetch" href="/notebook/assets/js/107.a0a63241.js"><link rel="prefetch" href="/notebook/assets/js/108.93ccf0bf.js"><link rel="prefetch" href="/notebook/assets/js/109.57caff98.js"><link rel="prefetch" href="/notebook/assets/js/11.d9d769c3.js"><link rel="prefetch" href="/notebook/assets/js/110.6aa16c3f.js"><link rel="prefetch" href="/notebook/assets/js/111.293e18e5.js"><link rel="prefetch" href="/notebook/assets/js/112.7f593e53.js"><link rel="prefetch" href="/notebook/assets/js/113.e03d7fe0.js"><link rel="prefetch" href="/notebook/assets/js/114.4fd73421.js"><link rel="prefetch" href="/notebook/assets/js/115.8dc5910d.js"><link rel="prefetch" href="/notebook/assets/js/116.fc5215b7.js"><link rel="prefetch" href="/notebook/assets/js/117.851bae37.js"><link rel="prefetch" href="/notebook/assets/js/118.03cb2186.js"><link rel="prefetch" href="/notebook/assets/js/119.17f93b7e.js"><link rel="prefetch" href="/notebook/assets/js/12.125d7a59.js"><link rel="prefetch" href="/notebook/assets/js/120.4ea767fb.js"><link rel="prefetch" href="/notebook/assets/js/121.483ad579.js"><link rel="prefetch" href="/notebook/assets/js/122.17d2596f.js"><link rel="prefetch" href="/notebook/assets/js/123.56e20e4e.js"><link rel="prefetch" href="/notebook/assets/js/124.2ec822f9.js"><link rel="prefetch" href="/notebook/assets/js/125.bccb84ed.js"><link rel="prefetch" href="/notebook/assets/js/126.e38a7466.js"><link rel="prefetch" href="/notebook/assets/js/127.43962ebd.js"><link rel="prefetch" href="/notebook/assets/js/128.23f8246b.js"><link rel="prefetch" href="/notebook/assets/js/129.e718e26c.js"><link rel="prefetch" href="/notebook/assets/js/13.f56b83ad.js"><link rel="prefetch" href="/notebook/assets/js/130.a51fe94d.js"><link rel="prefetch" href="/notebook/assets/js/131.64fb54a3.js"><link rel="prefetch" href="/notebook/assets/js/132.badc2a1a.js"><link rel="prefetch" href="/notebook/assets/js/133.72f12c19.js"><link rel="prefetch" href="/notebook/assets/js/134.0b1b2dc0.js"><link rel="prefetch" href="/notebook/assets/js/135.be2d740c.js"><link rel="prefetch" href="/notebook/assets/js/136.c3dc9ba1.js"><link rel="prefetch" href="/notebook/assets/js/137.784510e4.js"><link rel="prefetch" href="/notebook/assets/js/138.ff844e48.js"><link rel="prefetch" href="/notebook/assets/js/139.1ac43f97.js"><link rel="prefetch" href="/notebook/assets/js/14.3ed225c4.js"><link rel="prefetch" href="/notebook/assets/js/140.4c427bf3.js"><link rel="prefetch" href="/notebook/assets/js/141.459f2cb4.js"><link rel="prefetch" href="/notebook/assets/js/142.e69e2b00.js"><link rel="prefetch" href="/notebook/assets/js/143.b9cd433a.js"><link rel="prefetch" href="/notebook/assets/js/144.c12cb09a.js"><link rel="prefetch" href="/notebook/assets/js/145.43e25cc4.js"><link rel="prefetch" href="/notebook/assets/js/146.0963c075.js"><link rel="prefetch" href="/notebook/assets/js/147.37f2e690.js"><link rel="prefetch" href="/notebook/assets/js/148.631fbe69.js"><link rel="prefetch" href="/notebook/assets/js/149.a22c5490.js"><link rel="prefetch" href="/notebook/assets/js/15.10a06d24.js"><link rel="prefetch" href="/notebook/assets/js/150.e6265d54.js"><link rel="prefetch" href="/notebook/assets/js/151.aefdb9fd.js"><link rel="prefetch" href="/notebook/assets/js/152.a8c722bd.js"><link rel="prefetch" href="/notebook/assets/js/153.ec2b1513.js"><link rel="prefetch" href="/notebook/assets/js/154.4fdc765f.js"><link rel="prefetch" href="/notebook/assets/js/155.de537bd1.js"><link rel="prefetch" href="/notebook/assets/js/156.7f87247c.js"><link rel="prefetch" href="/notebook/assets/js/157.f51afdd1.js"><link rel="prefetch" href="/notebook/assets/js/158.247f3f23.js"><link rel="prefetch" href="/notebook/assets/js/159.2342ec68.js"><link rel="prefetch" href="/notebook/assets/js/16.bc052b7f.js"><link rel="prefetch" href="/notebook/assets/js/161.b8389795.js"><link rel="prefetch" href="/notebook/assets/js/162.5809ad21.js"><link rel="prefetch" href="/notebook/assets/js/163.6d40855f.js"><link rel="prefetch" href="/notebook/assets/js/164.cd5e8c28.js"><link rel="prefetch" href="/notebook/assets/js/165.c409d97c.js"><link rel="prefetch" href="/notebook/assets/js/166.75cd78fe.js"><link rel="prefetch" href="/notebook/assets/js/167.37552374.js"><link rel="prefetch" href="/notebook/assets/js/168.d4ab1d56.js"><link rel="prefetch" href="/notebook/assets/js/169.39f3c518.js"><link rel="prefetch" href="/notebook/assets/js/17.2a8873d5.js"><link rel="prefetch" href="/notebook/assets/js/170.7993242d.js"><link rel="prefetch" href="/notebook/assets/js/171.09f40b60.js"><link rel="prefetch" href="/notebook/assets/js/172.79168981.js"><link rel="prefetch" href="/notebook/assets/js/173.a75cd141.js"><link rel="prefetch" href="/notebook/assets/js/174.bd510afd.js"><link rel="prefetch" href="/notebook/assets/js/175.c3f8ba94.js"><link rel="prefetch" href="/notebook/assets/js/176.dd9cbd79.js"><link rel="prefetch" href="/notebook/assets/js/177.f53090f5.js"><link rel="prefetch" href="/notebook/assets/js/178.bcda53b0.js"><link rel="prefetch" href="/notebook/assets/js/179.2d510aa5.js"><link rel="prefetch" href="/notebook/assets/js/18.2d0a0d6d.js"><link rel="prefetch" href="/notebook/assets/js/180.6928e4f9.js"><link rel="prefetch" href="/notebook/assets/js/181.6cc94652.js"><link rel="prefetch" href="/notebook/assets/js/182.c7d6fde2.js"><link rel="prefetch" href="/notebook/assets/js/183.1a7eaa90.js"><link rel="prefetch" href="/notebook/assets/js/184.5d52b650.js"><link rel="prefetch" href="/notebook/assets/js/185.2f8eddcd.js"><link rel="prefetch" href="/notebook/assets/js/186.2615bcf2.js"><link rel="prefetch" href="/notebook/assets/js/187.ffb3009d.js"><link rel="prefetch" href="/notebook/assets/js/188.deef127e.js"><link rel="prefetch" href="/notebook/assets/js/189.51b1958b.js"><link rel="prefetch" href="/notebook/assets/js/19.482e846f.js"><link rel="prefetch" href="/notebook/assets/js/190.a5e85724.js"><link rel="prefetch" href="/notebook/assets/js/191.fd2dfc70.js"><link rel="prefetch" href="/notebook/assets/js/192.5cb3b141.js"><link rel="prefetch" href="/notebook/assets/js/193.3a6173b0.js"><link rel="prefetch" href="/notebook/assets/js/194.2b937e4b.js"><link rel="prefetch" href="/notebook/assets/js/195.71b1b3e2.js"><link rel="prefetch" href="/notebook/assets/js/196.d8d64ba1.js"><link rel="prefetch" href="/notebook/assets/js/197.fbea3131.js"><link rel="prefetch" href="/notebook/assets/js/198.25e90057.js"><link rel="prefetch" href="/notebook/assets/js/199.5bef52d0.js"><link rel="prefetch" href="/notebook/assets/js/20.3869e9c1.js"><link rel="prefetch" href="/notebook/assets/js/200.839b8484.js"><link rel="prefetch" href="/notebook/assets/js/201.dcc87a43.js"><link rel="prefetch" href="/notebook/assets/js/202.83abe52e.js"><link rel="prefetch" href="/notebook/assets/js/203.c8c886fe.js"><link rel="prefetch" href="/notebook/assets/js/204.7d91a0aa.js"><link rel="prefetch" href="/notebook/assets/js/205.dd934d84.js"><link rel="prefetch" href="/notebook/assets/js/206.ae9d7602.js"><link rel="prefetch" href="/notebook/assets/js/207.f5ac5260.js"><link rel="prefetch" href="/notebook/assets/js/208.203ba066.js"><link rel="prefetch" href="/notebook/assets/js/209.202991be.js"><link rel="prefetch" href="/notebook/assets/js/21.95b2d828.js"><link rel="prefetch" href="/notebook/assets/js/210.3e7c6db0.js"><link rel="prefetch" href="/notebook/assets/js/211.d231f4d5.js"><link rel="prefetch" href="/notebook/assets/js/212.74210f2c.js"><link rel="prefetch" href="/notebook/assets/js/213.ca497e10.js"><link rel="prefetch" href="/notebook/assets/js/214.256f2f8d.js"><link rel="prefetch" href="/notebook/assets/js/215.e5a91195.js"><link rel="prefetch" href="/notebook/assets/js/22.bfedf3cf.js"><link rel="prefetch" href="/notebook/assets/js/23.07416482.js"><link rel="prefetch" href="/notebook/assets/js/24.54aaf5dd.js"><link rel="prefetch" href="/notebook/assets/js/25.5fddfc47.js"><link rel="prefetch" href="/notebook/assets/js/26.3beace9a.js"><link rel="prefetch" href="/notebook/assets/js/27.8166fc8b.js"><link rel="prefetch" href="/notebook/assets/js/28.45eec4fe.js"><link rel="prefetch" href="/notebook/assets/js/29.7d2c15a3.js"><link rel="prefetch" href="/notebook/assets/js/3.58b1a014.js"><link rel="prefetch" href="/notebook/assets/js/30.a7841312.js"><link rel="prefetch" href="/notebook/assets/js/31.dc9675e8.js"><link rel="prefetch" href="/notebook/assets/js/32.93c6c35d.js"><link rel="prefetch" href="/notebook/assets/js/33.9a64b2f6.js"><link rel="prefetch" href="/notebook/assets/js/34.0c220f3c.js"><link rel="prefetch" href="/notebook/assets/js/35.9f407421.js"><link rel="prefetch" href="/notebook/assets/js/36.ee8ac781.js"><link rel="prefetch" href="/notebook/assets/js/37.569079d1.js"><link rel="prefetch" href="/notebook/assets/js/38.56b32d83.js"><link rel="prefetch" href="/notebook/assets/js/39.6ea9c955.js"><link rel="prefetch" href="/notebook/assets/js/4.5042ba18.js"><link rel="prefetch" href="/notebook/assets/js/40.5bdebc85.js"><link rel="prefetch" href="/notebook/assets/js/41.8607bd5a.js"><link rel="prefetch" href="/notebook/assets/js/42.2063b1d0.js"><link rel="prefetch" href="/notebook/assets/js/43.ff59782c.js"><link rel="prefetch" href="/notebook/assets/js/44.c40eaded.js"><link rel="prefetch" href="/notebook/assets/js/45.bc61bb49.js"><link rel="prefetch" href="/notebook/assets/js/46.e9ea5687.js"><link rel="prefetch" href="/notebook/assets/js/47.a9626a0e.js"><link rel="prefetch" href="/notebook/assets/js/48.9bf986fe.js"><link rel="prefetch" href="/notebook/assets/js/49.dd90158a.js"><link rel="prefetch" href="/notebook/assets/js/5.b9679d2a.js"><link rel="prefetch" href="/notebook/assets/js/50.a9546c5a.js"><link rel="prefetch" href="/notebook/assets/js/51.dcc646ec.js"><link rel="prefetch" href="/notebook/assets/js/52.111a35ff.js"><link rel="prefetch" href="/notebook/assets/js/53.19719081.js"><link rel="prefetch" href="/notebook/assets/js/54.543f990e.js"><link rel="prefetch" href="/notebook/assets/js/55.02863756.js"><link rel="prefetch" href="/notebook/assets/js/56.262a1288.js"><link rel="prefetch" href="/notebook/assets/js/57.a80801ee.js"><link rel="prefetch" href="/notebook/assets/js/58.38d623bc.js"><link rel="prefetch" href="/notebook/assets/js/59.07a6b6b6.js"><link rel="prefetch" href="/notebook/assets/js/6.77dfe150.js"><link rel="prefetch" href="/notebook/assets/js/60.df11d23d.js"><link rel="prefetch" href="/notebook/assets/js/61.764a5b2e.js"><link rel="prefetch" href="/notebook/assets/js/62.28916805.js"><link rel="prefetch" href="/notebook/assets/js/63.f54fb2ba.js"><link rel="prefetch" href="/notebook/assets/js/64.73bb9e27.js"><link rel="prefetch" href="/notebook/assets/js/65.8e45d2c8.js"><link rel="prefetch" href="/notebook/assets/js/66.6cabc639.js"><link rel="prefetch" href="/notebook/assets/js/67.61f4e99c.js"><link rel="prefetch" href="/notebook/assets/js/68.fec9c74e.js"><link rel="prefetch" href="/notebook/assets/js/69.b530b731.js"><link rel="prefetch" href="/notebook/assets/js/7.bac04506.js"><link rel="prefetch" href="/notebook/assets/js/70.e2902def.js"><link rel="prefetch" href="/notebook/assets/js/71.09df6e0a.js"><link rel="prefetch" href="/notebook/assets/js/72.5c611ac8.js"><link rel="prefetch" href="/notebook/assets/js/73.66c43b39.js"><link rel="prefetch" href="/notebook/assets/js/74.243e6a2f.js"><link rel="prefetch" href="/notebook/assets/js/75.de524cab.js"><link rel="prefetch" href="/notebook/assets/js/76.750c2fc0.js"><link rel="prefetch" href="/notebook/assets/js/77.fa7ddd5d.js"><link rel="prefetch" href="/notebook/assets/js/78.192816fd.js"><link rel="prefetch" href="/notebook/assets/js/79.a3f3fcd9.js"><link rel="prefetch" href="/notebook/assets/js/8.48754361.js"><link rel="prefetch" href="/notebook/assets/js/80.c3fd6acb.js"><link rel="prefetch" href="/notebook/assets/js/81.7ba4627a.js"><link rel="prefetch" href="/notebook/assets/js/82.e355d704.js"><link rel="prefetch" href="/notebook/assets/js/83.2579aea2.js"><link rel="prefetch" href="/notebook/assets/js/84.1f72cccf.js"><link rel="prefetch" href="/notebook/assets/js/85.7874726d.js"><link rel="prefetch" href="/notebook/assets/js/86.a863f0c3.js"><link rel="prefetch" href="/notebook/assets/js/87.c8c7690e.js"><link rel="prefetch" href="/notebook/assets/js/88.5d7963f9.js"><link rel="prefetch" href="/notebook/assets/js/89.9391f30b.js"><link rel="prefetch" href="/notebook/assets/js/9.c2fb6f2c.js"><link rel="prefetch" href="/notebook/assets/js/90.76bedd2e.js"><link rel="prefetch" href="/notebook/assets/js/91.e345e87a.js"><link rel="prefetch" href="/notebook/assets/js/92.175f428e.js"><link rel="prefetch" href="/notebook/assets/js/93.f45b4417.js"><link rel="prefetch" href="/notebook/assets/js/94.e3f459de.js"><link rel="prefetch" href="/notebook/assets/js/95.1632f845.js"><link rel="prefetch" href="/notebook/assets/js/96.4d0a41d5.js"><link rel="prefetch" href="/notebook/assets/js/97.39bd1831.js"><link rel="prefetch" href="/notebook/assets/js/98.54282751.js"><link rel="prefetch" href="/notebook/assets/js/99.b60593a3.js">
+    <link rel="stylesheet" href="/notebook/assets/css/0.styles.cee65b40.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/notebook/" class="home-link router-link-active"><!----> <span class="site-name">我的笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/notebook/guide/" class="nav-link">
+  指南
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/notebook/guide/" class="nav-link">
+  指南
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>MyBatis</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/notebook/mybatis/" aria-current="page" class="sidebar-link">MyBatis 简介</a></li><li><a href="/notebook/mybatis/Druid 简介.html" class="sidebar-link">Druid 简介</a></li><li><a href="/notebook/mybatis/Spring 整合 Druid.html" class="sidebar-link">Spring 整合 Druid</a></li><li><a href="/notebook/mybatis/Spring 整合 MyBatis.html" class="sidebar-link">Spring 整合 MyBatis</a></li><li><a href="/notebook/mybatis/小知识-utf8 与 utf8mb4 字符集.html" class="sidebar-link">小知识-utf8 与 utf8mb4 字符集</a></li><li><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html" class="active sidebar-link">第一个 MyBatis 对象关系映射</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#pom" class="sidebar-link">POM</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#导入-sql" class="sidebar-link">导入 SQL</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#定义实体类" class="sidebar-link">定义实体类</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#定义数据访问接口" class="sidebar-link">定义数据访问接口</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#第一个-mybatis-对象关系映射-html-定义业务逻辑接口-定义业务逻辑接口" class="sidebar-link">第一个-MyBatis-对象关系映射.html#定义业务逻辑接口)定义业务逻辑接口</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#实现业务逻辑接口" class="sidebar-link">实现业务逻辑接口</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#定义映射文件" class="sidebar-link">定义映射文件</a></li><li class="sidebar-sub-header"><a href="/notebook/mybatis/第一个 MyBatis 对象关系映射.html#创建单元测试" class="sidebar-link">创建单元测试</a></li></ul></li><li><a href="/notebook/mybatis/MyBatis 单表 CRUD 操作.html" class="sidebar-link">MyBatis 单表 CRUD 操作</a></li><li><a href="/notebook/mybatis/MyBatis 动态 SQL.html" class="sidebar-link">MyBatis 动态 SQL</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="第一个-mybatis-对象关系映射"><a href="#第一个-mybatis-对象关系映射" class="header-anchor">#</a> 第一个 MyBatis 对象关系映射</h1> <h2 id="pom"><a href="#pom" class="header-anchor">#</a> POM</h2> <p>编写完相关代码后，我们可以使用单元测试查看 MyBatis 的执行效果，需要增加单元测试相关依赖，配置如下：</p> <div class="language-text extra-class"><pre class="language-text"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+    &lt;version&gt;4.3.17.RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;junit&lt;/groupId&gt;
+    &lt;artifactId&gt;junit&lt;/artifactId&gt;
+    &lt;version&gt;4.12&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre></div><h2 id="导入-sql"><a href="#导入-sql" class="header-anchor">#</a> 导入 SQL</h2> <p>位置： <code>Java 微服务架构相关环境资料-SQL/myshop.zip</code></p> <h2 id="定义实体类"><a href="#定义实体类" class="header-anchor">#</a> 定义实体类</h2> <p>以 <code>tb_user</code> 表为例，实体类代码如下：</p> <div class="language-text extra-class"><pre class="language-text"><code>package com.funtl.my.shop.domain;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class TbUser implements Serializable {
+    private Long id;
+    private String username;
+    private String password;
+    private String phone;
+    private String email;
+    private Date created;
+    private Date update;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdate() {
+        return update;
+    }
+
+    public void setUpdate(Date update) {
+        this.update = update;
+    }
+}
+</code></pre></div><h2 id="定义数据访问接口"><a href="#定义数据访问接口" class="header-anchor">#</a> 定义数据访问接口</h2> <p>注意：Spring 集成 MyBatis 后，不需要手动实现 DAO 层的接口，所有的 SQL 执行语句都写在对应的关系映射配置文件中。</p> <div class="language-text extra-class"><pre class="language-text"><code>package com.funtl.my.shop.web.admin.dao;
+
+import com.funtl.my.shop.domain.TbUser;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface TbUserDao {
+
+    /**
+     * 查询全部用户信息
+     * @return
+     */
+    public List&lt;TbUser&gt; selectAll();
+}
+</code></pre></div><h2 id="第一个-mybatis-对象关系映射-html-定义业务逻辑接口-定义业务逻辑接口"><a href="#第一个-mybatis-对象关系映射-html-定义业务逻辑接口-定义业务逻辑接口" class="header-anchor">#</a> 第一个-MyBatis-对象关系映射.html#定义业务逻辑接口)定义业务逻辑接口</h2> <div class="language-text extra-class"><pre class="language-text"><code>package com.funtl.my.shop.web.admin.service;
+
+import com.funtl.my.shop.domain.TbUser;
+
+import java.util.List;
+
+public interface TbUserService {
+
+    /**
+     * 查询全部用户信息
+     * @return
+     */
+    public List&lt;TbUser&gt; selectAll();
+}
+</code></pre></div><h2 id="实现业务逻辑接口"><a href="#实现业务逻辑接口" class="header-anchor">#</a> 实现业务逻辑接口</h2> <div class="language-text extra-class"><pre class="language-text"><code>package com.funtl.my.shop.web.admin.service.impl;
+
+import com.funtl.my.shop.domain.TbUser;
+import com.funtl.my.shop.web.admin.dao.TbUserDao;
+import com.funtl.my.shop.web.admin.service.TbUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TbUserServiceImpl implements TbUserService {
+
+    @Autowired
+    private TbUserDao tbUserDao;
+
+    @Override
+    public List&lt;TbUser&gt; selectAll() {
+        return tbUserDao.selectAll();
+    }
+}
+</code></pre></div><h2 id="定义映射文件"><a href="#定义映射文件" class="header-anchor">#</a> 定义映射文件</h2> <p>映射文件，简称为 Mapper，主要完成 DAO 层中 SQL 语句的映射。映射文件名随意，一般放在 <code>src/resources/mapper</code> 文件夹中。这里映射文件名称定为 <code>TbUserMapper.xml</code>。</p> <div class="language-text extra-class"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot; &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;com.funtl.my.shop.web.admin.dao.TbUserDao&quot;&gt;
+    &lt;select id=&quot;selectAll&quot; resultType=&quot;TbUser&quot;&gt;
+        SELECT
+          a.id,
+          a.username,
+          a.password,
+          a.phone,
+          a.email,
+          a.created,
+          a.updated
+        FROM
+          tb_user AS a
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre></div><h2 id="创建单元测试"><a href="#创建单元测试" class="header-anchor">#</a> 创建单元测试</h2> <p>所有工作准备就绪，我们就可以测试 MyBatis 是否能够正常执行了。创建一个单元测试类，代码如下：</p> <div class="language-text extra-class"><pre class="language-text"><code>package com.funtl.my.shop.web.admin.service.test;
+
+import com.funtl.my.shop.domain.TbUser;
+import com.funtl.my.shop.web.admin.dao.TbUserDao;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({&quot;classpath:spring-context.xml&quot;, &quot;classpath:spring-context-druid.xml&quot;, &quot;classpath:spring-context-mybatis.xml&quot;})
+public class TbUserServiceTest {
+
+    @Autowired
+    private TbUserDao tbUserDao;
+
+    @Test
+    public void testSelectAll() {
+        List&lt;TbUser&gt; tbUsers = tbUserDao.selectAll();
+        for (TbUser tbUser : tbUsers) {
+            System.out.println(tbUser.getUsername());
+        }
+    }
+}
+</code></pre></div><p>成功执行测试后，控制台输出如下：</p> <div class="language-text extra-class"><pre class="language-text"><code>2018-06-13 08:00:40,069 INFO [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-06-13 08:00:40,106 INFO [org.springframework.test.context.support.DefaultTestContextBootstrapper] - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4b9e13df, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2b98378d, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@475530b9, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1d057a39, org.springframework.test.context.transaction.TransactionalTestExecutionListener@26be92ad, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4c70fda8]2018-06-13 08:00:40,213 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-context.xml]
+2018-06-13 08:00:40,513 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-context-druid.xml]
+2018-06-13 08:00:40,565 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-context-mybatis.xml]
+2018-06-13 08:00:40,586 INFO [org.springframework.context.support.GenericApplicationContext] - Refreshing org.springframework.context.support.GenericApplicationContext@55d56113: startup date [Wed Jun 13 08:00:40 CST 2018]; root of context hierarchy
+2018-06-13 08:00:41,650 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} inited
+zhangsan
+zhangsan1
+zhangsan2
+zhangsan3
+zhangsan5
+lisi
+lisi1
+jd_gogogo
+tidy
+tidy1
+niuniu
+niuniu2
+niuniu3
+niuniu4
+test01
+test02
+2018-06-13 08:00:42,143 INFO [org.springframework.context.support.GenericApplicationContext] - Closing org.springframework.context.support.GenericApplicationContext@55d56113: startup date [Wed Jun 13 08:00:40 CST 2018]; root of context hierarchy
+2018-06-13 08:00:42,149 INFO [com.alibaba.druid.pool.DruidDataSource] - {dataSource-1} closed
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2021/4/15 上午12:33:56</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/notebook/mybatis/小知识-utf8 与 utf8mb4 字符集.html" class="prev">
+        小知识-utf8 与 utf8mb4 字符集
+      </a></span> <span class="next"><a href="/notebook/mybatis/MyBatis 单表 CRUD 操作.html">
+        MyBatis 单表 CRUD 操作
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/notebook/assets/js/app.400f01da.js" defer></script><script src="/notebook/assets/js/2.ffba27f2.js" defer></script><script src="/notebook/assets/js/160.98e33fe9.js" defer></script>
+  </body>
+</html>
